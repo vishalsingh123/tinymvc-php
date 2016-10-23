@@ -58,6 +58,10 @@ class TinyMVC_Controller
     throw new Exception("Unknown controller method '{$function}'");
 
   }
+
+	function call_action($action, $params) {
+    return call_user_func_array(array($this,$action), $params);
+  }
   
 }
 

@@ -117,7 +117,10 @@ class tmvc
       ob_start();
     
     /* execute controller action */
-    $this->controller->{$this->action}();
+		$params = $this->url_segments;
+		// Removing controller and action from params
+    array_shift($params);array_shift($params);
+    $this->controller->call_action($this->action, $params);
     
     if($this->config['timer'])
     {
